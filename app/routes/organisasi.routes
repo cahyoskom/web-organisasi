@@ -1,0 +1,34 @@
+
+module.exports = app => {
+    const organisasi = require("../controllers/organisasi.controller.js");
+  
+    var router = require("express").Router();
+  
+    // Create a new Organisasi
+    router.post("/", organisasi.create);
+  
+    // Retrieve all organisasi
+    router.get("/", organisasi.findAll);
+  
+    // Retrieve all published organisasi
+    router.get("/organisasi", organisasi.findAllPublished);
+
+    // Retrieve all no Cover Image organisasi
+    router.get("/nofoto", organisasi.findNoCoverImage);
+  
+    // Retrieve a single Organisasi with id
+    router.get("/:id", organisasi.findOne);
+  
+    // Update a Organisasi with id
+    router.put("/:id", organisasi.update);
+  
+    // Delete a Organisasi with id
+    router.delete("/:id", organisasi.delete);
+  
+    // Delete all Organisasi
+    router.delete("/", organisasi.deleteAll);
+  
+    app.use('/api/organisasi', router);
+
+  };
+
